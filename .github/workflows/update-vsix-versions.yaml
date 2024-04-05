@@ -34,14 +34,12 @@ jobs:
         cd dependencies/che-plugin-registry/build/scripts
         ./update_extensions_versions.sh
 
-    - name: Check for changes
-      id: git_changes
-      run: |
-        changes=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-        echo "::set-output name=changes::${changes}"
+    - name: Check for uncommitted changes
+      id: check-changes
+      uses: mskri/check-uncommitted-changes-action@v1.0.1
 
     - name: Create Pull Request
-      if: ${{ steps.git_changes.outputs.changes != '' }}
+      if: steps.check-changes.outputs.changes != ''
       run: |
         # Set up git configuration
         export GITHUB_TOKEN=${{ secrets.CRW_BUILD_TOKEN }}
