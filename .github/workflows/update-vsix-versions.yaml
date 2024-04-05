@@ -9,9 +9,13 @@
 
 name: Check new versions of VSIX extensions
 
+# on:
+  # schedule:
+    # - cron: '0 0 1 * *' # Run at midnight (00:00) on the 1st day of every month
 on:
-  schedule:
-    - cron: '0 0 1 * *' # Run at midnight (00:00) on the 1st day of every month
+  push:
+    branches: 
+      - devspaces-3-rhel-8
 
 jobs:
   check:
