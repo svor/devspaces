@@ -18,7 +18,7 @@ on:
       - devspaces-3-rhel-8
 
 jobs:
-  Check-new-versions:
+  Check-new-extensions-versions:
     runs-on: ubuntu-20.04
 
     steps:
@@ -37,6 +37,8 @@ jobs:
     - name: Verify Changed files
       uses: tj-actions/verify-changed-files@v19
       id: verify-changed-files
+      with:
+        files: openvsx-sync.json
         
     - name: Create Pull Request
       if: steps.verify-changed-files.outputs.files_changed == 'true'
