@@ -34,13 +34,6 @@ jobs:
         cd dependencies/che-plugin-registry/build/scripts
         ./update_extensions_versions.sh
 
-    - name: Install GitHub CLI
-      run: |
-        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-        sudo apt-add-repository https://cli.github.com/packages
-        sudo apt update
-        sudo apt install gh
-
     - name: Check for changes
       id: git_changes
       run: |
