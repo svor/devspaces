@@ -38,7 +38,7 @@ jobs:
       uses: tj-actions/verify-changed-files@v19
       id: verify-changed-files
       with:
-        files: openvsx-sync.json
+        files: dependencies/che-plugin-registry/openvsx-sync.json
         
     - name: Create Pull Request
       if: steps.verify-changed-files.outputs.files_changed == 'true'
